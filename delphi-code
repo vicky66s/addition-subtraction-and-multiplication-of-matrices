@@ -1,0 +1,92 @@
+program MatrixOperations;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+type
+  TMatrix = array of array of Integer;
+
+// Function to add two matrices
+function Add(const A, B: TMatrix): TMatrix;
+var
+  i, j: Integer;
+begin
+  SetLength(Result, Length(A), Length(A[0]));
+  for i := 0 to High(A) do
+    for j := 0 to High(A[i]) do
+      Result[i][j] := A[i][j] + B[i][j];
+end;
+
+// Function to subtract two matrices
+function Subtract(const A, B: TMatrix): TMatrix;
+var
+  i, j: Integer;
+begin
+  SetLength(Result, Length(A), Length(A[0]));
+  for i := 0 to High(A) do
+    for j := 0 to High(A[i]) do
+      Result[i][j] := A[i][j] - B[i][j];
+end;
+
+// Function to multiply two matrices
+function Multiply(const A, B: TMatrix): TMatrix;
+var
+  i, j, k: Integer;
+begin
+  SetLength(Result, Length(A), Length(B[0]));
+  for i := 0 to High(A) do
+    for j := 0 to High(B[0]) do
+    begin
+      Result[i][j] := 0;
+      for k := 0 to High(A[i]) do
+        Result[i][j] := Result[i][j] + A[i][k] * B[k][j];
+    end;
+end;
+
+// Procedure to print a matrix
+procedure PrintMatrix(const M: TMatrix);
+var
+  i, j: Integer;
+begin
+  for i := 0 to High(M) do
+  begin
+    for j := 0 to High(M[i]) do
+      Write(M[i][j], ' ');
+    Writeln;
+  end;
+end;
+
+var
+  A, B, Sum, Difference, Product: TMatrix;
+begin
+  // Define matrices A and B
+  A := TMatrix.Create([1, 2, 3], [4, 5, 6], [7, 8, 9]);
+  B := TMatrix.Create([9, 8, 7], [6, 5, 4], [3, 2, 1]);
+
+  // Perform matrix operations
+  Sum := Add(A, B);
+  Difference := Subtract(A, B);
+  Product := Multiply(A, B);
+
+  // Print results
+  Writeln('Matrix A:');
+  PrintMatrix(A);
+  Writeln;
+  
+  Writeln('Matrix B:');
+  PrintMatrix(B);
+  Writeln;
+  
+  Writeln('Sum of matrices:');
+  PrintMatrix(Sum);
+  Writeln;
+  
+  Writeln('Difference of matrices:');
+  PrintMatrix(Difference);
+  Writeln;
+  
+  Writeln('Product of matrices:');
+  PrintMatrix(Product);
+end.
