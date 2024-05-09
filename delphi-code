@@ -1,7 +1,5 @@
 program MatrixOperations;
-
 {$APPTYPE CONSOLE}
-
 uses
   SysUtils;
 
@@ -70,7 +68,7 @@ begin
   Difference := Subtract(A, B);
   Product := Multiply(A, B);
 
-  // Print results
+  // Print results:
   Writeln('Matrix A:');
   PrintMatrix(A);
   Writeln;
