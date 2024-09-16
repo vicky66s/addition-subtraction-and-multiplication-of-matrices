@@ -6,7 +6,7 @@ uses
 type
   TMatrix = array of array of Integer;
 
-// Function to add two matrices.00000
+// Function to add two matrices.000001111111111111111
 function Add(const A, B: TMatrix): TMatrix;
 var
   i, j: Integer;
