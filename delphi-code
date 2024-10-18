@@ -1,3 +1,4 @@
+// 000001111111111111111
 program MatrixOperations;
 {$APPTYPE CONSOLE}
 uses
@@ -6,7 +7,7 @@ uses
 type
   TMatrix = array of array of Integer;
 
-// Function to add two matrices.000001111111111111111
+// Function to add two matrices.
 function Add(const A, B: TMatrix): TMatrix;
 var
   i, j: Integer;
